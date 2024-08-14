@@ -1,32 +1,40 @@
-Tech Stack
+# Royal Library Backend System
 
-Node.js with TypeScript
-Express.js - Web framework for Node.js
-MongoDB - NoSQL database
+## Tech Stack
 
-Features
+- **Node.js with TypeScript**
+- **Express.js** - Web framework for Node.js
+- **MongoDB** - NoSQL database
 
-Manage Book References: Add, delete, and retrieve book references.
-Catalog Search: Search books by genre, title, or author.
-Reservation & Borrowing System: Users can reserve and borrow books online, track availability, and view reservation history.
-Reminder System: Automated email notifications for upcoming due dates and late returns.
-Wallet System: Users can maintain a balance for borrowing books and pay late fees.
+## Features
 
-Installation and Setup
-Prerequisites
-Docker
-Docker Compose
+- **Manage Book References**: Add, delete, and retrieve book references.
+- **Catalog Search**: Search books by genre, title, or author.
+- **Reservation & Borrowing System**: Users can reserve and borrow books online, track availability, and view reservation history.
+- **Reminder System**: Automated email notifications for upcoming due dates and late returns.
+- **Wallet System**: Users can maintain a balance for borrowing books and pay late fees.
 
-Steps to Run the Application
+## Installation and Setup
 
-1. git clone git@github.com:dkapanadze/accountable.git
+### Prerequisites
 
-cd accountable
+- **Docker**
+- **Docker Compose**
 
-2. Create a .env File
+### Steps to Run the Application
 
-Create a .env file at the root of the project and add the following environment variables:
+1. **Clone the Repository**
 
+   ```bash
+   git clone git@github.com:dkapanadze/accountable.git
+   cd accountable
+   ```
+
+## 2. Create a `.env` File
+
+Create a `.env` file at the root of the project and add the following environment variables:
+
+````env
 PORT=8080
 MONGODB_URI=mongodb://mongodb:27017/accountable
 JWT_SECRET=your_jwt_secret
@@ -34,7 +42,7 @@ EMAIL_SERVICE=smtp.example.com
 EMAIL_USER=your-email@example.com
 EMAIL_PASS=your-email-password
 
-3. Build and Run with Docker Compose
+## 3. Build and Run with Docker Compose
 
 Run the following command to build and start the application and its dependencies using Docker Compose:
 
@@ -42,23 +50,45 @@ docker-compose up --build
 
 This will start the following services:
 
-Node.js/Express Application: Running on http://localhost:8080
-MongoDB: Running as a Docker container
+- **Node.js/Express Application**: Running on [http://localhost:8080](http://localhost:8080)
+- **MongoDB**: Running as a Docker container
 
-4. Go to docker container and run seeders
+## 4. Go to Docker Container and Run Seeders
 
-docker exec -it accountable_app /bin/bash
+1. Access the Docker container:
 
-npm run seed:books
-npm run seed:users
-npm run seed:wallets
+    ```bash
+    docker exec -it accountable_app /bin/bash
+    ```
 
-exit- exit container
+2. Run the seeders:
 
-5. Access the Application
+    ```bash
+    npm run seed:books
+    npm run seed:users
+    npm run seed:wallets
+    ```
 
-Once the services are up and running, you can access the application at: http://localhost:8080
-The API documentation will be available at: http://localhost:8080/docs
+3. Exit the container:
+
+    ```bash
+    exit
+    ```
+
+## 5. Access the Application
+
+Once the services are up and running, you can access the application at:
+
+[http://localhost:8080](http://localhost:8080)
+
+The API documentation will be available at:
+
+[http://localhost:8080/docs](http://localhost:8080/docs)
+
+
+
+
+
 
 API Endpoints:
 
@@ -282,3 +312,4 @@ createdAt : date
 updatedAt: date
 }
 ]
+````
