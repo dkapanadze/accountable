@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: Library API
+  version: 1.0.0
+  description: A simple library API
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Development server
+paths:
+  /books/reservation-history:
+    post:
+      summary: Get book reservation history
+      tags:
+        - books
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReservationHistoryRequest"
+      responses:
+        200:
+          description: Reservation history retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReservationHistory"
+        404:
+          description: No reservation history found
+components:
+  schemas:
+    ReservationHistoryRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          pattern: "^[0-9a-fA-F]{24}$"
+          description: The user ID (MongoDB ObjectID)
+        bookId:
+          type: string
+          pattern: "^[0-9a-fA-F]{24}$"
+          description: The book ID (MongoDB ObjectID)
+        walletId:
+          type: string
+          pattern: "^[0-9a-fA-F]{24}$"
+          description: The wallet ID (MongoDB ObjectID)
+        operationType:
+          type: string
+          description: The type of operation (e.g., BUY, BORROW)
+      required:
+        - userId
+        - bookId
+        - walletId
+        - operationType
+    ReservationHistory:
+      type: object
+      properties:
+        _id:
+          type: string
+          pattern: "^[0-9a-fA-F]{24}$"
+          description: Unique identifier for the reservation history entry (MongoDB ObjectID)
+        userId:
+          type: string
+          pattern: "^[0-9a-fA-F]{24}$"
+          description: ID of the user associated with the reservation (MongoDB ObjectID)
+        bookId:
+          type: string
+          pattern: "^[0-9a-fA-F]{24}$"
+          description: ID of the book associated with the reservation (MongoDB ObjectID)
+        walletId:
+          type: string
+          pattern: "^[0-9a-fA-F]{24}$"
+          description: ID of the wallet used in the transaction (MongoDB ObjectID)
+        operationType:
+          type: string
+          description: Type of operation (e.g., BUY, BORROW)
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the record was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the record was last updated
