@@ -285,31 +285,37 @@ Response Body:
 }
 ```
 
-Get reservation history
+### Get Reservation History
 
-Endpoint Details
-Endpoint: GET /api/v1/books/reservation-history
-Description: Retrieves a list of reservation history entries based on optional query parameters for filtering and date ranges.
+**Endpoint:** `GET /api/v1/books/reservation-history`
 
-Request Body
-The request body should include the following optional fields:
+**Description:** Retrieves a list of reservation history entries based on optional query parameters for filtering and date ranges.
 
-userId: (Optional) ID of the user who made the reservation.
-bookId: (Optional) ID of the book that was reserved.
-walletId: (Optional) ID of the wallet used for the reservation.
-operationType: (Optional) Type of operation (e.g., "BUY", "RESERVE").
-before: (Optional) Filter reservations made before this date (ISO 8601 format).
-after: (Optional) Filter reservations made after this date (ISO 8601 format).
+**Request Body:**
 
-Response Body
-[
+```json
 {
-\_id: string
-userId : string
-bookId : string
-walletId : string
-operationType : string
-createdAt : date
-updatedAt: date
+  "userId": "string", // Optional: ID of the user who made the reservation.
+  "bookId": "string", // Optional: ID of the book that was reserved.
+  "walletId": "string", // Optional: ID of the wallet used for the reservation.
+  "operationType": "string", // Optional: Type of operation (e.g., "BUY", "RESERVE").
+  "before": "date", // Optional: Filter reservations made before this date (ISO 8601 format).
+  "after": "date" // Optional: Filter reservations made after this date (ISO 8601 format).
 }
+```
+
+**Response Body**
+
+```json
+[
+  {
+    "_id": "string",
+    "userId": "string",
+    "bookId": "string",
+    "walletId": "string",
+    "operationType": "string",
+    "createdAt": "date",
+    "updatedAt": "date"
+  }
 ]
+```
