@@ -148,142 +148,142 @@ The API documentation will be available at:
   "author": "string",
   "publicationYear": "date",
   "price": "number",
-  "isNewBook": "boolean", // Field to mark if it's a new book or not
+  "isNewBook": "boolean",
   "publisher": "string",
   "quantity": "number"
 }
 ```
 
-Response:
+**Response:**
 
 Status Code: 201 Created
 
 ```json
 {
-"_id": number,
-"title": string,
-"author": string,
-"publicationYear": number,
-"publisher": string,
-"availableQuantity": number,
-"totalQuantity": number,
-"price": number,
-"createdAt": ISO date,
-"updatedAt": ISO date,
+  "_id": "string",
+  "title": "string",
+  "author": "string",
+  "publicationYear": "number",
+  "publisher": "string",
+  "availableQuantity": "number",
+  "totalQuantity": "number",
+  "price": "number",
+  "createdAt": "ISO date",
+  "updatedAt": "ISO date"
 }
 ```
 
-Search Books
-Endpoint: GET /api/v1/books/search
+### Search Books
 
-Description: Searches for books in the library catalog based on the provided query parameters.
+**Endpoint:** `GET /api/v1/books/search`
 
-Query Parameters:
+**Description:** Searches for books in the library catalog based on the provided query parameters.
 
-title (optional): The title of the book to search for.
-author (optional): The author of the book to search for.
-publisher (optional): The publisher of the book to search for.
+**Query Parameters:**
 
-Response:
+- `title` (optional): The title of the book to search for.
+- `author` (optional): The author of the book to search for.
+- `publisher` (optional): The publisher of the book to search for.
 
-Status Code: 200
+**Response:**
 
+**Status Code:** `200 OK`
+
+**Response Body:**
+
+```json
 [
-{
-\_id: number
-"title": string,
-"author": string,
-"publicationYear": number,
-"publisher": string,
-"availableQuantity": number,
-"totalQuantity": number,
-"price": number,
-"createdAt": ISO date,
-"updatedAt": ISO date,
-},
+  {
+    "_id": "string",
+    "title": "string",
+    "author": "string",
+    "publicationYear": "number",
+    "publisher": "string",
+    "availableQuantity": "number",
+    "totalQuantity": "number",
+    "price": "number",
+    "createdAt": "ISO date",
+    "updatedAt": "ISO date"
+  }
 ]
+```
 
-Delete a Book
-Endpoint: DELETE /api/v1/books/{id}
+### Delete a Book
 
-Description: Deletes a book from the library catalog based on the provided book ID.
+**Endpoint:** `DELETE /api/v1/books/{id}`
 
-Path Parameter:
+**Description:** Deletes a book from the library catalog based on the provided book ID.
 
-id (required): The unique identifier of the book to be deleted. This should be a valid MongoDB ObjectId.
+**Path Parameter:**
 
-Request Example: DELETE /api/v1/books/605c72ef8f8c2f001f647f3b
+- `id` (required): The unique identifier of the book to be deleted. This should be a valid MongoDB ObjectId.
 
-Response Example:
+**Request Example:**
 
-{
-"message": "Book deleted successfully",
-"quantityLeft": 3
-}
-
-Delete a Book
-Endpoint: DELETE /api/v1/books/{id}
-
-Description: Deletes a book from the library catalog based on the provided book ID.
-
-Path Parameter:
-
-id (required): The unique identifier of the book to be deleted. This should be a valid MongoDB ObjectId.
-Request Example:
-
-http
-Copy code
+```http
 DELETE /api/v1/books/605c72ef8f8c2f001f647f3b
-Response:
+```
+
+**Response:**
 
 Status Code: 200 OK (if the book was successfully deleted)
 Response Body:
 
+```json
 {
-"message": "Book deleted successfully",
-"quantityLeft": "number" // The number of copies left in the catalog after deletion
+  "message": "Book deleted successfully",
+  "quantityLeft": "number" // The number of copies left in the catalog after deletion
 }
+```
 
-Response Example:
+**Response Example:**
 
+```json
 {
-"message": "Book deleted successfully",
-"quantityLeft": 3
+  "message": "Book deleted successfully",
+  "quantityLeft": 3
 }
+```
 
-Errors:
+**Errors:**
 
 404 Not Found: If the book with the specified ID does not exist.
 
-Response Body:
+**Response Body:**
 
+```json
 {
-"message": "Book not found"
+  "message": "Book not found"
 }
+```
 
 400 Bad Request: If the ID format is invalid.
 
-Response Body:
+**Response Body:**
 
+```json
 {
-"message": "Invalid ID format"
+  "message": "Invalid ID format"
 }
+```
 
-Create transaction
+### Create Transaction
 
-Endpoint Details
-Endpoint: POST /api/v1/transactions
-Description: Creates a new transaction based on the provided data.
+**Endpoint:** `POST /api/v1/transactions`
 
-Request Body
+**Description:** Creates a new transaction based on the provided data.
 
+**Request Body:**
+
+```json
 {
-"userId": string,
-"type": string, [RESERVATION, LATE_FEE ]
-"status": string, [PENDING, SUCCESS, CANCELLED, REJECTED]
-"bookId": string,
-"walletId": string
+  "userId": "string",
+  "type": "string", // [RESERVATION, LATE_FEE]
+  "status": "string", // [PENDING, SUCCESS, CANCELLED, REJECTED]
+  "bookId": "string",
+  "walletId": "string"
 }
+```
 
 Get reservation history
 
@@ -313,11 +313,3 @@ createdAt : date
 updatedAt: date
 }
 ]
-
-```
-
-```
-
-```
-
-```
