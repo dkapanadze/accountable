@@ -43,7 +43,7 @@ EMAIL_USER=your-email@example.com
 EMAIL_PASS=your-email-password
 ```
 
-## 3. Build and Run with Docker Compose
+3. **Build and Run with Docker Compose**
 
 Run the following command to build and start the application and its dependencies using Docker Compose:
 
@@ -54,7 +54,7 @@ This will start the following services:
 - **Node.js/Express Application**: Running on [http://localhost:8080](http://localhost:8080)
 - **MongoDB**: Running as a Docker container
 
-## 4. Go to Docker Container and Run Seeders
+4. **Go to Docker Container and Run Seeders**
 
 1. Access the Docker container:
 
@@ -62,7 +62,7 @@ This will start the following services:
    docker exec -it accountable_app /bin/bash
    ```
 
-2. Run the seeders:
+1. Run the seeders:
 
    ```bash
    npm run seed:books
@@ -70,13 +70,13 @@ This will start the following services:
    npm run seed:wallets
    ```
 
-3. Exit the container:
+1. Exit the container:
 
    ```bash
    exit
    ```
 
-## 5. Access the Application
+   5.**Access the Application**
 
 Once the services are up and running, you can access the application at:
 
