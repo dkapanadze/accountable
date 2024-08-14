@@ -30,17 +30,18 @@
    cd accountable
    ```
 
-## 2. Create a `.env` File
+2. **Create a `.env` File**
 
 Create a `.env` file at the root of the project and add the following environment variables:
 
-````env
+```env
 PORT=8080
 MONGODB_URI=mongodb://mongodb:27017/accountable
 JWT_SECRET=your_jwt_secret
 EMAIL_SERVICE=smtp.example.com
 EMAIL_USER=your-email@example.com
 EMAIL_PASS=your-email-password
+```
 
 ## 3. Build and Run with Docker Compose
 
@@ -57,23 +58,23 @@ This will start the following services:
 
 1. Access the Docker container:
 
-    ```bash
-    docker exec -it accountable_app /bin/bash
-    ```
+   ```bash
+   docker exec -it accountable_app /bin/bash
+   ```
 
 2. Run the seeders:
 
-    ```bash
-    npm run seed:books
-    npm run seed:users
-    npm run seed:wallets
-    ```
+   ```bash
+   npm run seed:books
+   npm run seed:users
+   npm run seed:wallets
+   ```
 
 3. Exit the container:
 
-    ```bash
-    exit
-    ```
+   ```bash
+   exit
+   ```
 
 ## 5. Access the Application
 
@@ -84,11 +85,6 @@ Once the services are up and running, you can access the application at:
 The API documentation will be available at:
 
 [http://localhost:8080/docs](http://localhost:8080/docs)
-
-
-
-
-
 
 API Endpoints:
 
@@ -312,4 +308,7 @@ createdAt : date
 updatedAt: date
 }
 ]
-````
+
+```
+
+```
