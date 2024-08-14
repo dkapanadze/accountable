@@ -110,52 +110,57 @@ The API documentation will be available at:
 ]
 ```
 
-Get Book By ID
-Endpoint: GET /api/v1/books/{id}
+### Get Book By ID
 
-Description: Retrieves details of a book by its ID.
+**Endpoint:** `GET /api/v1/books/{id}`
 
-Parameters:
+**Description:** Retrieves details of a book by its ID.
 
-id (path parameter): The ID of the book.
+**Parameters:**
 
-response schema
+- `id` (path parameter): The ID of the book.
 
+**Response Schema:**
+
+```json
 {
-\_id: string
-title: string
-author: string
-publicationYear: date
-publisher: string
-quantity: number
-price: number
-
+  "_id": "string",
+  "title": "string",
+  "author": "string",
+  "publicationYear": "date",
+  "publisher": "string",
+  "quantity": "number",
+  "price": "number"
 }
+```
 
-Add a Book
-Endpoint: POST /api/v1/books
+### Add a Book
 
-Description: Adds a new book, or new copy to the library catalog.
+**Endpoint:** `POST /api/v1/books`
 
-Request body:
+**Description:** Adds a new book, or a new copy to the library catalog.
 
+**Request Body:**
+
+```json
 {
-"title": string,
-"author": string,
-"publicationYear": date,
-"price": number,
-"isNewBook": boolean, //field to mark if it's a new book or not
-"publisher" : string,
-"quantity": number
+  "title": "string",
+  "author": "string",
+  "publicationYear": "date",
+  "price": "number",
+  "isNewBook": "boolean", // Field to mark if it's a new book or not
+  "publisher": "string",
+  "quantity": "number"
 }
+```
 
 Response:
 
 Status Code: 201 Created
 
+```json
 {
-"newBook": {
-\_id: number
+"_id": number,
 "title": string,
 "author": string,
 "publicationYear": number,
@@ -165,10 +170,8 @@ Status Code: 201 Created
 "price": number,
 "createdAt": ISO date,
 "updatedAt": ISO date,
-
-    }
-
 }
+```
 
 Search Books
 Endpoint: GET /api/v1/books/search
