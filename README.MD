@@ -108,6 +108,7 @@ The API documentation will be available at:
     "price": "number"
   }
 ]
+```
 
 Get Book By ID
 Endpoint: GET /api/v1/books/{id}
@@ -309,6 +310,8 @@ createdAt : date
 updatedAt: date
 }
 ]
+
+```
 
 ```
 
