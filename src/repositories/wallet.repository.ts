@@ -1,4 +1,4 @@
-import mongoose, { ObjectId, UpdateQuery } from "mongoose";
+import mongoose, { UpdateQuery } from "mongoose";
 import { IWallet } from "../models";
 import Decimal from "decimal.js";
 import { addDays } from "date-fns";

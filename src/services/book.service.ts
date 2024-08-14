@@ -1,9 +1,4 @@
-import {
-  MongooseError,
-  FilterQuery,
-  UpdateQuery,
-  QueryOptions,
-} from "mongoose";
+import { FilterQuery, UpdateQuery } from "mongoose";
 import { BookRepository } from "../repositories/book.repository";
 import AppError from "../utils/AppError";
 import logger from "../utils/logger";

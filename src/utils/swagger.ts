@@ -1,10 +1,9 @@
-import { Application, Express, Request, Response } from "express";
+import { Application, Request, Response } from "express";
 import { version } from "../../package.json";
 import logger from "./logger";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
-import * as fs from "fs";
-import * as path from "path";
+
 import YAML from "yamljs";
 
 const apiPrefix = "/api/v1";
@@ -19,7 +18,7 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url: `http://localhost:${process.env.PORT || 8080}${apiPrefix}`, // Set the base URL for your API
+        url: `http://localhost:${process.env.PORT || 8080}${apiPrefix}`,
         description: "Development server",
       },
     ],

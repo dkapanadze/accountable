@@ -2,7 +2,6 @@ import envVars from "./config/validateEnv";
 import { connectToMongoDB } from "./config/mongoose";
 import logger from "./utils/logger";
 import app from "./app";
-import swaggerDocs from "./utils/swagger";
 
 (global as any).logger = logger;
 
