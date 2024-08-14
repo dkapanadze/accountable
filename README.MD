@@ -76,7 +76,7 @@ This will start the following services:
    exit
    ```
 
-   5.**Access the Application**
+5.**Access the Application**
 
 Once the services are up and running, you can access the application at:
 
@@ -86,26 +86,27 @@ The API documentation will be available at:
 
 [http://localhost:8080/docs](http://localhost:8080/docs)
 
-API Endpoints:
+## API Endpoints
 
-Get all books:
+### Get All Books
 
-GET /api/v1/books
-Retrieves a list of all books in the library.
+**Endpoint:** `GET /api/v1/books`
 
-response schema
+**Description:** Retrieves a list of all books in the library.
 
+**Response Schema:**
+
+```json
 [
-{
-\_id: string
-title: string
-author: string
-publicationYear: date
-publisher: string
-quantity: number
-price: number
-
-}
+  {
+    "_id": "string",
+    "title": "string",
+    "author": "string",
+    "publicationYear": "date",
+    "publisher": "string",
+    "quantity": "number",
+    "price": "number"
+  }
 ]
 
 Get Book By ID
@@ -308,6 +309,8 @@ createdAt : date
 updatedAt: date
 }
 ]
+
+```
 
 ```
 
