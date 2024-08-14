@@ -3,7 +3,7 @@ import { IBook } from "../models/book.model";
 import { handleAsyncErrors } from "../utils/errorHandler";
 import AppError from "../utils/AppError";
 import { IBookService } from "../services/interfaces";
-import { isValidObjectId } from "mongoose";
+import { isValidObjectId } from "../utils/validateObjectId";
 
 export const getBookById = (bookService: IBookService) =>
   handleAsyncErrors(async (req: Request, res: Response) => {

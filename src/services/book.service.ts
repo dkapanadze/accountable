@@ -13,7 +13,6 @@ import BookOperation, {
   OperationTypeEnum,
 } from "../models/BookOperation.model";
 import { IBookService } from "./interfaces";
-import { promises } from "dns";
 
 export class BookService implements IBookService {
   constructor(private readonly bookRepository: BookRepository) {}

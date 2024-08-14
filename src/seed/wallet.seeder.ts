@@ -3,7 +3,7 @@ import { CurrencyEnum, IWallet } from "../models";
 import User from "../models/user.model";
 import envVars from "../config/validateEnv";
 import Wallet, { WalletStatusEnum } from "../models/wallet.model";
-import logger from "./logger";
+import logger from "../utils/logger";
 
 export const seedWallets = async () => {
   await mongoose.connect(envVars.MONGO_URI);
@@ -28,10 +28,6 @@ export const seedWallets = async () => {
       status: WalletStatusEnum.ACTIVE,
       name: "Wallet",
       borrowedBooks: [],
-      limits: {
-        dailyLimit: 100,
-        monthlyLimit: 1000,
-      },
     });
   });
 
