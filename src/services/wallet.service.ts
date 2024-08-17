@@ -87,6 +87,13 @@ export class WalletService implements IWalletService {
     });
   }
 
+  async getUserWallet(
+    userId: string,
+    walletId: string,
+  ): Promise<IWallet> | null {
+    return await this.walletRepository.getUserWallet(userId, walletId);
+  }
+
   async checkBorrowLimit(
     userId: string,
     bookId: string,

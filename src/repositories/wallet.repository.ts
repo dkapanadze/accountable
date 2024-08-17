@@ -1,6 +1,7 @@
 import mongoose, { UpdateQuery } from "mongoose";
 import { IWallet } from "../models";
 import Decimal from "decimal.js";
+import { ObjectId } from "mongodb";
 import { addDays } from "date-fns";
 import Wallet, { IBorrowedBook } from "../models/wallet.model";
 import AppError from "../utils/AppError";
@@ -43,7 +44,7 @@ export class WalletRepository {
       walletId,
       { balance: updatedBalance.toNumber() },
       { new: true },
-    );
+    ).exec();
   }
 
   async addLateFee(
@@ -58,7 +59,7 @@ export class WalletRepository {
     const wallet = await Wallet.findOne({
       _id: walletId,
       "borrowedBooks.bookId": bookId,
-    });
+    }).exec();
 
     if (!wallet) {
       throw new AppError("Wallet not found", 404);
@@ -67,13 +68,12 @@ export class WalletRepository {
     const borrowedBook = wallet.borrowedBooks.find(
       (book) => book.bookId.toString() === bookId.toString(),
     );
-    console.log(borrowedBook, "borrowedBook");
     if (!borrowedBook) {
       throw new AppError("Book not found in wallet", 404);
     }
 
     const currentLateFee = new Decimal(borrowedBook.lateFee || 0);
-    console.log(currentLateFee, "currentLateFee");
+
     const updatedLateFee = currentLateFee.plus(new Decimal(amount));
 
     const updatedWallet = await Wallet.findOneAndUpdate(
@@ -81,7 +81,7 @@ export class WalletRepository {
       { $set: { "borrowedBooks.$.lateFee": updatedLateFee.toNumber() } },
       { new: true },
     ).lean();
-    console.log(updatedWallet, "updatedWallet");
+
     const updatedBorrowedBook = updatedWallet.borrowedBooks.find(
       (book) => book.bookId.toString() === bookId.toString(),
     );
@@ -91,6 +91,16 @@ export class WalletRepository {
       wallet: updatedWallet._id,
       userId: updatedWallet.userId,
     };
+  }
+
+  async getUserWallet(
+    userId: string,
+    walletId: string,
+  ): Promise<IWallet> | null {
+    return Wallet.findOne({
+      userId: new ObjectId(userId),
+      _id: walletId,
+    }).exec();
   }
 
   async getUsersWithDueBooks(daysCount?: number) {

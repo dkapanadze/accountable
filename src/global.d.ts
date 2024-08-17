@@ -1,7 +1,9 @@
 import { Logger } from "winston";
 
-declare global {
-  let logger: Logger;
+declare namespace NodeJS {
+  interface Global {
+    logger: typeof logger;
+  }
 }
 
 export {};

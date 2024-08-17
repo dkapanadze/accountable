@@ -273,7 +273,7 @@ Response Body:
 
 **Description:** Creates a new transaction based on the provided data.
 
-**Request Body:**
+**Query Body:**
 
 ```json
 {
@@ -291,7 +291,7 @@ Response Body:
 
 **Description:** Retrieves a list of reservation history entries based on optional query parameters for filtering and date ranges.
 
-**Request Body:**
+**Quey Params:**
 
 ```json
 {

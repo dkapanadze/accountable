@@ -8,10 +8,10 @@ export class UserRepository {
       userId,
       { status: StatusEnum.BANNED },
       { new: true },
-    );
+    ).exec();
   }
 
   async findById(userId: string) {
-    return User.findById(userId);
+    return User.findById(userId).exec();
   }
 }

@@ -4,6 +4,7 @@ import { handleAsyncErrors } from "../utils/errorHandler";
 import AppError from "../utils/AppError";
 import { IBookService } from "../services/interfaces";
 import { isValidObjectId } from "../utils/validateObjectId";
+import { ReservationQueryDto } from "../dto";
 
 export const getBookById = (bookService: IBookService) =>
   handleAsyncErrors(async (req: Request, res: Response) => {
@@ -56,12 +57,16 @@ export const deleteBook = (bookService: IBookService) =>
 
 export const getReservationHistory = (bookService: IBookService) =>
   handleAsyncErrors(async (req: Request, res: Response) => {
-    const { before, after, ...query } = req.body;
+    const { before, after, ...query } =
+      req.query as unknown as ReservationQueryDto;
+
+ 
 
     const reservationHistory = await bookService.getReservationHistory(
       after,
       before,
       query,
     );
+
     res.status(200).json({ reservationHistory });
   });

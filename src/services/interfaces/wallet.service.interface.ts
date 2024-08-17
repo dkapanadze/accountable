@@ -29,4 +29,5 @@ export interface IWalletService {
   ): Promise<void>;
   getUsersWithDueBooks(daysCount: number): Promise<IWallet[]> | [];
   findById(walletId: string): Promise<IWallet> | null;
+  getUserWallet(userId: string, walletId: string): Promise<IWallet> | null;
 }

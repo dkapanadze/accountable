@@ -32,8 +32,7 @@ export class TransactionService implements ITransactionService {
     } else {
       transaction.amount = TransactionAmountEnum.LATE_FEE_AMOUNT;
     }
-    console.log("transaction", transaction);
-    console.log("bookId", bookId);
+
     const newTransaction = await this.transactionRepository.create(transaction);
 
     await this.walletService.deductUserBalance(

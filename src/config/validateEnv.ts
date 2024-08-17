@@ -1,5 +1,6 @@
 import Joi from "joi";
 import dotenv from "dotenv";
+import logger from "../utils/logger";
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ const { error, value: envVars } = envSchema.validate(process.env, {
 });
 
 if (error) {
-  console.error(
+  logger.error(
     "Invalid environment variables:",
     error.details.map((d) => d.message).join(", "),
   );

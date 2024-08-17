@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import envVars from "./validateEnv";
+import logger from "../utils/logger";
 
 export const connectToMongoDB = async () => {
   try {
@@ -7,9 +8,9 @@ export const connectToMongoDB = async () => {
       envVars.MONGO_URI || "mongodb://localhost:27017/accountable",
     );
 
-    console.log("Connected to MongoDB");
+    logger.info("Connected to MongoDB");
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
+    logger.error("Error connecting to MongoDB:", error);
     process.exit(1);
   }
 };

@@ -34,7 +34,7 @@ export const reservationMiddleware = async (
 const checkStatusAndWallet = async (walletId: string, userId: string) => {
   const user = await userServices.findById(userId);
 
-  const wallet = await walletService.findById(walletId);
+  const wallet = await walletService.getUserWallet(userId, walletId);
 
   if (!user) {
     throw new AppError("User not found", 404);
@@ -45,7 +45,7 @@ const checkStatusAndWallet = async (walletId: string, userId: string) => {
   }
 
   if (!wallet) {
-    throw new AppError("Wallet not found", 404);
+    throw new AppError("Wallet is not associated with this user", 404);
   }
 
   if (wallet.status === WalletStatusEnum.INACTIVE) {

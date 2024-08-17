@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { IUser } from "./user.model";
 import { IBook } from "./book.model";
+import { addDays } from "date-fns";
 
 export enum CurrencyEnum {
   USD = "USD",
@@ -106,10 +107,8 @@ export const WalletSchema: Schema = new Schema<IWallet>(
           type: Date,
           required: true,
           default: function () {
-            const reservationDate = Date.now();
-            const endDate = new Date(reservationDate);
-            endDate.setDate(endDate.getDate() + BorrowDurationEnum.TWO_WEEKS);
-            return endDate;
+            const now = new Date();
+            return addDays(now, BorrowDurationEnum.TWO_WEEKS);
           },
         },
       },

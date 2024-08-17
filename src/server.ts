@@ -3,7 +3,7 @@ import { connectToMongoDB } from "./config/mongoose";
 import logger from "./utils/logger";
 import app from "./app";
 
-(global as any).logger = logger;
+global.logger = logger;
 
 const PORT = envVars.PORT || 3000;
 

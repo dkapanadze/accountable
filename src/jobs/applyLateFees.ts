@@ -10,8 +10,6 @@ import { reminderService } from "../services";
 import logger from "../utils/logger";
 
 cron.schedule("0 0 * * *", async () => {
-  console.log("Late fee cron job started");
-
   try {
     const data: Partial<IWallet[]> =
       await reminderService.getUsersWithDueBooks();
@@ -19,7 +17,7 @@ cron.schedule("0 0 * * *", async () => {
     logger.info("Fetched data:", data);
 
     if (data.length === 0) {
-      console.log("No users with due books found.");
+      logger.info("No users with due books found.");
       return;
     }
 
